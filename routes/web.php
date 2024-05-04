@@ -14,5 +14,16 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
-});
+    return view('index');
+})->name('indexx');
+Route::get('category', function () {
+    return view('Categoryform');
+})->name('categoform');
+
+////Controller_Routes///////////
+Route::get('categories',[App\Http\Controllers\CategoryController::class,'index'])->name('output');
+Route::get('categories/create',[App\Http\Controllers\CategoryController::class,'create']);
+Route::post('categories/store',[App\Http\Controllers\CategoryController::class,'store'])->name('form');
+Route::get('editcategory/{id}', [App\Http\Controllers\CategoryController::class, 'edit'])->name('editcategoform');
+Route::put('categories/{id}', [App\Http\Controllers\CategoryController::class, 'update'])->name('update');
+Route::delete('categories/{id}', [App\Http\Controllers\CategoryController::class, 'destroy'])->name('destroy');
